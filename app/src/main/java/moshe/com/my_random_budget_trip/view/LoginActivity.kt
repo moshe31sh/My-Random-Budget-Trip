@@ -1,10 +1,14 @@
 package moshe.com.my_random_budget_trip.view
 
+import android.content.Context
 import android.os.Bundle
+import com.google.firebase.FirebaseApp
+import kotlinx.android.synthetic.main.activity_login.*
 import moshe.com.my_random_budget_trip.R
 import moshe.com.my_random_budget_trip.contract_impl.LoginPresenterImpl
 import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
+import moshe.com.my_random_budget_trip.model.User
 
 class LoginActivity : BaseActivity(), ILoginView {
 
@@ -13,6 +17,14 @@ class LoginActivity : BaseActivity(), ILoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mLoginPresenterImpl = LoginPresenterImpl(this)
+
+        init()
+    }
+
+    private fun init(){
+        loginLoginBtn.setOnClickListener {
+            mLoginPresenterImpl.callLogin(User(loginEmailTxt.text.toString().trim(), loginPasswordText.text.toString().trim()))
+        }
     }
 
     override fun getContentView(): Int {
