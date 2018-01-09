@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "302925151810",
+    "firebase_url": "https://my-random-budget-trip.firebaseio.com",
+    "project_id": "my-random-budget-trip",
+    "storage_bucket": "my-random-budget-trip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302925151810:android:ad30d1d739c206d1",
+        "android_client_info": {
+          "package_name": "moshe.com.my_random_budget_trip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302925151810-fv5hk1obe7bk3cucbll4knmsfstpnskt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "moshe.com.my_random_budget_trip",
+            "certificate_hash": "aee0c5fa1264defd52dbe4a967cdeb817b914dde"
+          }
+        },
+        {
+          "client_id": "302925151810-lk6tasnona4opc2d0b81a2f6qgu46o25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0zwLyzZG-PTmKCKrdNHKWlp_Nrcaf1q8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302925151810-lk6tasnona4opc2d0b81a2f6qgu46o25.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
