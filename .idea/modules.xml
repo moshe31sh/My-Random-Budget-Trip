@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnimatedLoadingIndicator/AnimatedLoadingIndicator.iml" filepath="$PROJECT_DIR$/AnimatedLoadingIndicator/AnimatedLoadingIndicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/My-Random-Budget-Trip.iml" filepath="$PROJECT_DIR$/My-Random-Budget-Trip.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

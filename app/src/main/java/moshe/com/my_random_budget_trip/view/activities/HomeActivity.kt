@@ -1,6 +1,5 @@
-package moshe.com.my_random_budget_trip.view
+package moshe.com.my_random_budget_trip.view.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import moshe.com.my_random_budget_trip.R
 

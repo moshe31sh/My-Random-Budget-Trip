@@ -1,4 +1,4 @@
-package moshe.com.my_random_budget_trip.view
+package moshe.com.my_random_budget_trip.view.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

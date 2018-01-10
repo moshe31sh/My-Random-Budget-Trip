@@ -5,7 +5,7 @@ import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.contracts.IRegisterPresenter
 import moshe.com.my_random_budget_trip.model.User
 import moshe.com.my_random_budget_trip.utils.ValidationUtils
-import moshe.com.my_random_budget_trip.view.RegisterActivity
+import moshe.com.my_random_budget_trip.view.activities.RegisterActivity
 
 /**
  * Created by moshe on 10/01/2018.
@@ -24,13 +24,15 @@ class RegisterPresenterImpl(private val mLoginView: ILoginView): IRegisterPresen
                 mLoginView.showPasswordError()
             }
             else -> {
-            mAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
-                if (task.isSuccessful) {
-                    mLoginView.onSuccess()
-                }else{
-                    TODO("handle failed register")
-                }
-            })
+                mLoginView.showLoading()
+                mAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
+                    if (task.isSuccessful) {
+                        mLoginView.onSuccess()
+                    }else{
+                        TODO("handle failed register")
+                    }
+                    mLoginView.hideLoading()
+                })
             }
         }
     }

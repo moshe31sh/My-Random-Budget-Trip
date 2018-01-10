@@ -4,25 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LoginActivity">
+    tools:context=".view.activities.LoginActivity">
 
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/loginLoginGoogleBtnContainer"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="76dp"
+    android:background="@color/google_btn_color"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <Button
         android:id="@+id/loginLoginGoogleBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="76dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/transparent"
         android:text="@string/login_with_google"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginLoginGoogleBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btn_google_light_normal_hdpi" />
+
+
+</android.support.constraint.ConstraintLayout>
+
 
     <EditText
         android:id="@+id/loginEmailTxt"
@@ -38,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginLoginGoogleBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loginLoginGoogleBtnContainer" />
 
     <EditText
         android:id="@+id/loginPasswordText"
@@ -58,7 +81,7 @@
     <Button
         android:id="@+id/loginLoginBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
@@ -101,7 +124,7 @@
     <Button
         android:id="@+id/loginCreateUserBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"

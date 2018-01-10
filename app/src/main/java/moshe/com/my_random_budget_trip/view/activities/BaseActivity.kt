@@ -1,32 +1,43 @@
-package moshe.com.my_random_budget_trip.view
+package moshe.com.my_random_budget_trip.view.activities
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import moshe.com.my_random_budget_trip.R
+import moshe.com.my_random_budget_trip.view.dialogs.LoadingDialog
 
 /**
  * Created by moshe on 09/01/2018.
  */
 
+@SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
+
+    private lateinit var mLoadingDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getContentView())
+        mLoadingDialog = LoadingDialog(this)
+
     }
 
     open fun getContentView() = 0
 
 
     protected fun showLoadingDialog(){
+        if(!mLoadingDialog.isShowing) {
+            mLoadingDialog.show()
+        }
 
-        TODO("build loading dialog")
     }
 
 
     protected fun dismissLoadingDialog(){
-        TODO("build loading dialog")
-
+        if(mLoadingDialog.isShowing) {
+            mLoadingDialog.dismiss()
+        }
     }
 
     override fun onBackPressed() {

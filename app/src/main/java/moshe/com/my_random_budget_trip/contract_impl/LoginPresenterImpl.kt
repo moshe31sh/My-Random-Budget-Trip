@@ -7,7 +7,7 @@ import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.model.User
 import moshe.com.my_random_budget_trip.utils.ValidationUtils
-import moshe.com.my_random_budget_trip.view.LoginActivity
+import moshe.com.my_random_budget_trip.view.activities.LoginActivity
 
 /**
  * Created by moshe on 09/01/2018.
@@ -17,7 +17,6 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
     private val mAuth = FirebaseAuth.getInstance()
 
     override fun callLogin(user: User) {
-        // TODO("show loading dialog")
         when {
             ValidationUtils.checkIfUserEmailValid(user.email) -> {
                 mLoginView.showUserNameError()
@@ -25,27 +24,31 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
             ValidationUtils.checkIfUserPasswordValid(user.password) -> {
                 mLoginView.showPasswordError()
             }
-            else ->
+            else -> {
+                mLoginView.showLoading()
                 mAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
                     if (task.isSuccessful) {
                         mLoginView.onSuccess()
-                    }else{
+                    } else {
 
                     }
+                    mLoginView.hideLoading()
                 })
+            }
         }
     }
 
     override fun loginWithGoogle(acct: GoogleSignInAccount) {
-        // TODO("show loading dialog")
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         val auth = FirebaseAuth.getInstance()
+        mLoginView.showLoading()
         auth.signInWithCredential(credential).addOnCompleteListener(mCtx, {task ->
             if (task.isSuccessful) {
                 mLoginView.onSuccess()
             }else{
 
             }
+            mLoginView.hideLoading()
         })
     }
 }

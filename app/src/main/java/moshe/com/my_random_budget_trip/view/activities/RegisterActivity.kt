@@ -1,4 +1,4 @@
-package moshe.com.my_random_budget_trip.view
+package moshe.com.my_random_budget_trip.view.activities
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_register.*
@@ -28,14 +28,13 @@ class RegisterActivity : BaseActivity(), ILoginView {
         }
     }
 
-    override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        dismissLoadingDialog()
     }
 
+    override fun showLoading() {
+        showLoadingDialog()
+    }
     override fun showUserNameError() {
         registerEmailText.error = "error"
     }

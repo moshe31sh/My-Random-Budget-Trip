@@ -1,11 +1,9 @@
-package moshe.com.my_random_budget_trip.view
+package moshe.com.my_random_budget_trip.view.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import kotlinx.android.synthetic.main.activity_login.*
 import moshe.com.my_random_budget_trip.R
 import moshe.com.my_random_budget_trip.contract_impl.LoginPresenterImpl
@@ -13,10 +11,7 @@ import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 
 
 class LoginActivity : BaseActivity(), ILoginView {
@@ -48,18 +43,18 @@ class LoginActivity : BaseActivity(), ILoginView {
 
     override fun getContentView(): Int = R.layout.activity_login
 
+    override fun hideLoading() {
+        dismissLoadingDialog()
+    }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showLoadingDialog()
     }
 
     override fun showUserNameError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun showPasswordError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
