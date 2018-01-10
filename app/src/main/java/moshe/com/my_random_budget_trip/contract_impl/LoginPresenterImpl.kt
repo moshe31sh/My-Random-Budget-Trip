@@ -24,7 +24,7 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
                 mLoginView.showPasswordError()
             }
             else ->
-                mAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, OnCompleteListener { task ->
+                mAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
                     if (task.isSuccessful) {
 
                     }else{
