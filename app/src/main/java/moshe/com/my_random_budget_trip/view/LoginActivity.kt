@@ -1,9 +1,8 @@
 package moshe.com.my_random_budget_trip.view
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.firebase.FirebaseApp
+import android.support.v4.app.ActivityOptionsCompat
 import kotlinx.android.synthetic.main.activity_login.*
 import moshe.com.my_random_budget_trip.R
 import moshe.com.my_random_budget_trip.contract_impl.LoginPresenterImpl
@@ -30,8 +29,7 @@ class LoginActivity : BaseActivity(), ILoginView {
         loginCreateUserBtn.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+            startActivity(intent,ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
         }
 
     }
