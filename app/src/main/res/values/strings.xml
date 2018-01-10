@@ -8,9 +8,11 @@
     <!--Login Activity-->
     <string name="login_have_not_an_account">Don\'t have an account?</string>
     <string name="login_sign_up_here">Sign Up Here</string>
-    <string name="login">LOGIN</string>
+    <string name="login">Login</string>
     <string name="login_password">password</string>
     <string name="login_email">email</string>
+    <string name="login_with_google">Sign in with Google</string>
+
 
 
     <!--Register Activity-->

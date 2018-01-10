@@ -1,5 +1,6 @@
 package moshe.com.my_random_budget_trip.contracts
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import moshe.com.my_random_budget_trip.model.User
 
 /**
@@ -7,4 +8,5 @@ import moshe.com.my_random_budget_trip.model.User
  */
 interface ILoginPresenter {
     fun callLogin(user: User)
+    fun loginWithGoogle(acct: GoogleSignInAccount)
 }

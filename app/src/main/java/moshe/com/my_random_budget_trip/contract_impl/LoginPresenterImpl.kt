@@ -1,6 +1,8 @@
 package moshe.com.my_random_budget_trip.contract_impl
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.model.User
@@ -15,6 +17,7 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
     private val mAuth = FirebaseAuth.getInstance()
 
     override fun callLogin(user: User) {
+        // TODO("show loading dialog")
         when {
             ValidationUtils.checkIfUserEmailValid(user.email) -> {
                 mLoginView.showUserNameError()
@@ -31,5 +34,18 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
                     }
                 })
         }
+    }
+
+    override fun loginWithGoogle(acct: GoogleSignInAccount) {
+        // TODO("show loading dialog")
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        val auth = FirebaseAuth.getInstance()
+        auth.signInWithCredential(credential).addOnCompleteListener(mCtx, {task ->
+            if (task.isSuccessful) {
+                mLoginView.onSuccess()
+            }else{
+
+            }
+        })
     }
 }
