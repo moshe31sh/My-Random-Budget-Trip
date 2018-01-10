@@ -1,6 +1,5 @@
 package moshe.com.my_random_budget_trip.contract_impl
 
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
@@ -26,7 +25,7 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
             else ->
                 mAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
                     if (task.isSuccessful) {
-
+                        mLoginView.onSuccess()
                     }else{
 
                     }

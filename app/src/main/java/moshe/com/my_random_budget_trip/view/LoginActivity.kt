@@ -54,6 +54,9 @@ class LoginActivity : BaseActivity(), ILoginView {
     }
 
     override fun onSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent,ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
+        finish()
     }
 }
