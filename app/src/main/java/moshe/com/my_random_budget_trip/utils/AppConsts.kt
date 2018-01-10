@@ -5,3 +5,4 @@ package moshe.com.my_random_budget_trip.utils
  */
 
 const val PASSWORD_LENGTH  : Int = 6
+const val SPLASH_DISPLAY_LENGTH : Long = 2000
