@@ -14,13 +14,22 @@
     <string name="login_with_google">Sign in with Google</string>
 
 
-
     <!--Register Activity-->
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="create_user">Create User</string>
     <string name="register_success_dialog">Register success</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="title_activity_home">HomeActivity</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <!--Nav Header-->
+    <string name="nav_header_user_name">Hello %1$s</string>
+    <string name="logout">Logout</string>
 </resources>
 

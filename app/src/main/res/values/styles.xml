@@ -17,4 +17,12 @@
     <style name="RobotoButtonStyle" parent="android:Widget.Button">
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="navigation_menu">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
