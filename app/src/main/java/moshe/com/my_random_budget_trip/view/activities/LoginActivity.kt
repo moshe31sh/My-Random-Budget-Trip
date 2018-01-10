@@ -12,6 +12,7 @@ import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import kotlinx.android.synthetic.main.activity_register.*
 
 
 class LoginActivity : BaseActivity(), ILoginView {
@@ -52,12 +53,12 @@ class LoginActivity : BaseActivity(), ILoginView {
     }
 
     override fun showUserNameError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loginEmailTxt.error = "error"
     }
 
-
     override fun showPasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loginPasswordText.error = "error"
+        loginPasswordText.text = null
     }
 
     override fun onSuccess() {

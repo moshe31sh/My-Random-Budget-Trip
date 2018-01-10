@@ -16,22 +16,24 @@ class RegisterPresenterImpl(private val mLoginView: ILoginView): IRegisterPresen
     private val mAuth = FirebaseAuth.getInstance()
 
     override fun callRegister(user: User) {
+        mLoginView.showLoading()
         when {
             ValidationUtils.checkIfUserEmailValid(user.email) -> {
                 mLoginView.showUserNameError()
+                mLoginView.hideLoading()
             }
             ValidationUtils.checkIfUserPasswordValid(user.password) -> {
                 mLoginView.showPasswordError()
+                mLoginView.hideLoading()
             }
             else -> {
-                mLoginView.showLoading()
                 mAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
+                    mLoginView.hideLoading()
                     if (task.isSuccessful) {
                         mLoginView.onSuccess()
                     }else{
                         TODO("handle failed register")
                     }
-                    mLoginView.hideLoading()
                 })
             }
         }

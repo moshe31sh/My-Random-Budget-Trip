@@ -3,6 +3,7 @@ package moshe.com.my_random_budget_trip.view.activities
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import moshe.com.my_random_budget_trip.R
 import moshe.com.my_random_budget_trip.view.dialogs.LoadingDialog
@@ -36,7 +37,9 @@ open class BaseActivity : AppCompatActivity() {
 
     protected fun dismissLoadingDialog(){
         if(mLoadingDialog.isShowing) {
-            mLoadingDialog.dismiss()
+            Handler().postDelayed({
+                mLoadingDialog.dismiss()
+            },200)
         }
     }
 

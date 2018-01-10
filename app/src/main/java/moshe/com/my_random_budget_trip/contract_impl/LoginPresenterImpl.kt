@@ -39,9 +39,9 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
     }
 
     override fun loginWithGoogle(acct: GoogleSignInAccount) {
+        mLoginView.showLoading()
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         val auth = FirebaseAuth.getInstance()
-        mLoginView.showLoading()
         auth.signInWithCredential(credential).addOnCompleteListener(mCtx, {task ->
             if (task.isSuccessful) {
                 mLoginView.onSuccess()

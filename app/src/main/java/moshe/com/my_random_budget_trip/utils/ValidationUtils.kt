@@ -8,5 +8,5 @@ object ValidationUtils {
 
     fun checkIfUserEmailValid(email: String): Boolean = !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-    fun checkIfUserPasswordValid(password: String): Boolean = password.length != PASSWORD_LENGTH
+    fun checkIfUserPasswordValid(password: String): Boolean = password.length <= PASSWORD_LENGTH
 }
