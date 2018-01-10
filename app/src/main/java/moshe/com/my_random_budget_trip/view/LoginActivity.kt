@@ -1,6 +1,7 @@
 package moshe.com.my_random_budget_trip.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.google.firebase.FirebaseApp
 import kotlinx.android.synthetic.main.activity_login.*
@@ -25,11 +26,18 @@ class LoginActivity : BaseActivity(), ILoginView {
         loginLoginBtn.setOnClickListener {
             mLoginPresenterImpl.callLogin(User(loginEmailTxt.text.toString().trim(), loginPasswordText.text.toString().trim()))
         }
+
+        loginCreateUserBtn.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+        }
+
     }
 
-    override fun getContentView(): Int {
-        return R.layout.activity_login
-    }
+    override fun getContentView(): Int = R.layout.activity_login
+
 
     override fun showLoading() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
