@@ -44,4 +44,10 @@ class FirebaseDao private constructor(){
 
     }
 
+    fun register(activity: Activity, user: User, success: (Boolean) -> Unit ) {
+        mAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(activity, { task->
+            success(task.isSuccessful)
+        })
+    }
+
 }

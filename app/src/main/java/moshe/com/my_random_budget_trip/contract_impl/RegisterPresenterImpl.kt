@@ -3,6 +3,7 @@ package moshe.com.my_random_budget_trip.contract_impl
 import com.google.firebase.auth.FirebaseAuth
 import moshe.com.my_random_budget_trip.contracts.ILoginView
 import moshe.com.my_random_budget_trip.contracts.IRegisterPresenter
+import moshe.com.my_random_budget_trip.dao.FirebaseDao
 import moshe.com.my_random_budget_trip.model.User
 import moshe.com.my_random_budget_trip.utils.ValidationUtils
 import moshe.com.my_random_budget_trip.view.activities.RegisterActivity
@@ -13,7 +14,6 @@ import moshe.com.my_random_budget_trip.view.activities.RegisterActivity
 class RegisterPresenterImpl(private val mLoginView: ILoginView): IRegisterPresenter {
 
     private val mCtx = mLoginView as RegisterActivity
-    private val mAuth = FirebaseAuth.getInstance()
 
     override fun callRegister(user: User) {
         mLoginView.showLoading()
@@ -27,14 +27,15 @@ class RegisterPresenterImpl(private val mLoginView: ILoginView): IRegisterPresen
                 mLoginView.hideLoading()
             }
             else -> {
-                mAuth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
-                    mLoginView.hideLoading()
-                    if (task.isSuccessful) {
+                FirebaseDao.Instance.register(mCtx, user){
+                    success->
+                    if (success) {
                         mLoginView.onSuccess()
                     }else{
                         TODO("handle failed register")
                     }
-                })
+                    mLoginView.hideLoading()
+                }
             }
         }
     }
