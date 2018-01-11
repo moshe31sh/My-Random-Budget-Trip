@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import moshe.com.my_random_budget_trip.contracts.ILoginPresenter
 import moshe.com.my_random_budget_trip.contracts.ILoginView
+import moshe.com.my_random_budget_trip.dao.FirebaseDao
 import moshe.com.my_random_budget_trip.model.User
 import moshe.com.my_random_budget_trip.utils.ValidationUtils
 import moshe.com.my_random_budget_trip.view.activities.LoginActivity
@@ -14,7 +15,6 @@ import moshe.com.my_random_budget_trip.view.activities.LoginActivity
  */
 class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter {
     private val mCtx = mLoginView as LoginActivity
-    private val mAuth = FirebaseAuth.getInstance()
 
     override fun callLogin(user: User) {
         when {
@@ -26,29 +26,30 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
             }
             else -> {
                 mLoginView.showLoading()
-                mAuth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(mCtx, { task ->
-                    if (task.isSuccessful) {
+                FirebaseDao.Instance.login(mCtx, user ){
+                    success ->
+                    if (success) {
                         mLoginView.onSuccess()
                     } else {
 
                     }
                     mLoginView.hideLoading()
-                })
+                }
             }
         }
     }
 
     override fun loginWithGoogle(acct: GoogleSignInAccount) {
         mLoginView.showLoading()
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        val auth = FirebaseAuth.getInstance()
-        auth.signInWithCredential(credential).addOnCompleteListener(mCtx, {task ->
-            if (task.isSuccessful) {
+
+        FirebaseDao.Instance.loginWithGoogle(mCtx, acct){
+            success ->
+            if (success) {
                 mLoginView.onSuccess()
-            }else{
+            } else {
 
             }
             mLoginView.hideLoading()
-        })
+        }
     }
 }
