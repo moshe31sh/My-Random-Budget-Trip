@@ -6,13 +6,14 @@ import android.os.Parcelable
 /**
  * Created by moshe on 09/01/2018.
  */
-class User() : Parcelable {
+class User()  {
 
     var email: String = ""
         private set
     var password: String =" "
         private set
 
+    lateinit var countries: ArrayList<City>
 
 
     constructor(email: String, password: String) : this() {
@@ -20,28 +21,10 @@ class User() : Parcelable {
         this.password = password
     }
 
-
-    constructor(parcel: Parcel) : this() {
-        email = parcel.readString()
-        password = parcel.readString()
+    constructor(email: String, password: String , countries: ArrayList<City> ) : this(email,password) {
+        this.countries = countries
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(email)
-        parcel.writeString(password)
-    }
 
-    override fun describeContents(): Int {
-        return 0
-    }
 
-    companion object CREATOR : Parcelable.Creator<User> {
-        override fun createFromParcel(parcel: Parcel): User {
-            return User(parcel)
-        }
-
-        override fun newArray(size: Int): Array<User?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
