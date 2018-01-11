@@ -31,6 +31,7 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
                     if (success) {
                         mLoginView.onSuccess()
                     } else {
+                        TODO("handle failed register")
 
                     }
                     mLoginView.hideLoading()
@@ -47,6 +48,7 @@ class LoginPresenterImpl (private val mLoginView: ILoginView) : ILoginPresenter 
             if (success) {
                 mLoginView.onSuccess()
             } else {
+                TODO("handle failed register")
 
             }
             mLoginView.hideLoading()

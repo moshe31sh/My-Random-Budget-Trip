@@ -34,8 +34,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
+
+        homeActivityAddNewCountryFab.setOnClickListener {
+            gotoPickLocationActivity()
+        }
     }
 
     override fun onBackPressed() {
@@ -95,5 +98,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if(FirebaseAuth.getInstance().currentUser == null) {
             goToLogin()
         }
+    }
+
+    private fun gotoPickLocationActivity(){
+        intent = Intent(this, PickLocationActivity::class.java )
+        startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, 0,  0).toBundle())
     }
 }

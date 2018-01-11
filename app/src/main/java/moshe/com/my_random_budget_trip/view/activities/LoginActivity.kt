@@ -64,14 +64,14 @@ class LoginActivity : BaseActivity(), ILoginView {
     override fun onSuccess() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent,ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
+        startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
         finish()
     }
 
     private fun gotoRegister(){
         val intent = Intent(this, RegisterActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent,ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
+        startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
     }
 
     private fun googleLogin(){

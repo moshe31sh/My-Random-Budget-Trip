@@ -24,6 +24,7 @@
             android:name=".view.activities.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
+        <activity android:name=".view.activities.PickLocationActivity"></activity>
     </application>
 
 </manifest>
