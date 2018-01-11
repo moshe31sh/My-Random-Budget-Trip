@@ -22,4 +22,12 @@
 
     <include layout="@layout/content_home" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/homeActivityAddNewCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_local_airport_black_24dp" />
+
 </android.support.design.widget.CoordinatorLayout>
