@@ -2,23 +2,25 @@ package moshe.com.my_random_budget_trip.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 
 /**
  * Created by moshe on 11/01/2018.
  */
-class Country : Parcelable {
+class Country : Parcelable, ExpandableGroup<City>{
 
-    lateinit var name: String
+     var name: String
         private set
 
-    lateinit var cities: ArrayList<City>
+     var cities: ArrayList<City>
 
-    constructor(name: String, cities: ArrayList<City>){
+    constructor(name: String, cities: ArrayList<City>): super(name, cities){
         this.name = name
         this.cities = cities
+
     }
 
-    constructor(){
+    constructor(): super("", ArrayList<City>()){
         this.name = ""
         this.cities = ArrayList()
     }
