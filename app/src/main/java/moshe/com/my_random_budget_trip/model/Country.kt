@@ -6,11 +6,17 @@ import android.os.Parcelable
 /**
  * Created by moshe on 11/01/2018.
  */
-class Country(name: String, cities: ArrayList<City>) : Parcelable {
-    var name = name
+class Country() : Parcelable {
+
+    lateinit var name: String
         private set
 
-    var cities: ArrayList<City> = cities
+    lateinit var cities: ArrayList<City>
+
+    constructor(name: String, cities: ArrayList<City>): this() {
+        this.name = name
+        this.cities = cities
+    }
 
     constructor(source: Parcel) : this(
             source.readString(),

@@ -7,4 +7,5 @@
 
 
     <color name="google_btn_color">#4285F4</color>
+    <color name="btn_color">#7f000000</color>
 </resources>

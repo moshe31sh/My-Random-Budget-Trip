@@ -15,10 +15,13 @@ import moshe.com.my_random_budget_trip.R
 import moshe.com.my_random_budget_trip.contract_impl.HomeActivityPresenterImpl
 import moshe.com.my_random_budget_trip.contracts.IHomeActivityPresenter
 import moshe.com.my_random_budget_trip.contracts.IHomeActivityView
+import moshe.com.my_random_budget_trip.model.Country
+import moshe.com.my_random_budget_trip.utils.RESULT_CODE_NEW_LOCATION
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IHomeActivityView{
 
     private lateinit var mHomeActivityPresenter : IHomeActivityPresenter
+    private lateinit var country: Country
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +104,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun gotoPickLocationActivity(){
-        intent = Intent(this, PickLocationActivity::class.java )
-        startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, 0,  0).toBundle())
+        intent =  PickLocationActivity.newIntent(this)
+        startActivityForResult(intent, RESULT_CODE_NEW_LOCATION)
+        overridePendingTransition(0,0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when{
+            resultCode == RESULT_CODE_NEW_LOCATION ->{
+                country = data!!.getParcelableExtra(PickLocationActivity.EXTRA_COUNTRY_DATA)
+            }
+        }
     }
 }

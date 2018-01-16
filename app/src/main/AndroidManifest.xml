@@ -3,7 +3,6 @@
     package="moshe.com.my_random_budget_trip">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAs0pQW1CS4yRgC4_e2PobfxWDRD3YrueY"/>
         <activity android:name=".view.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +24,8 @@
         <activity android:name=".view.activities.LoginActivity" />
         <activity
             android:name=".view.activities.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".view.activities.PickLocationActivity"></activity>
+            android:label="@string/title_activity_home" />
+        <activity android:name=".view.activities.PickLocationActivity"/>
     </application>
 
 </manifest>
