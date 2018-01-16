@@ -23,11 +23,10 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
 
             val intent : Intent = if(auth == null) {
-             Intent(applicationContext, LoginActivity::class.java)
+                LoginActivity.newIntent(this)
             }else{
-                Intent(applicationContext, HomeActivity::class.java)
+                HomeActivity.newIntent(this)
             }
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, 0, 0).toBundle())
             finish()
         }, SPLASH_DISPLAY_LENGTH)

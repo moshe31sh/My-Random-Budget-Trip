@@ -1,5 +1,6 @@
 package moshe.com.my_random_budget_trip.view.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
@@ -26,6 +27,16 @@ class LoginActivity : BaseActivity(), ILoginView {
 
         init()
     }
+
+    companion object {
+
+        fun newIntent(context: Context): Intent {
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            return intent
+        }
+    }
+
 
     private fun init(){
         loginLoginBtn.setOnClickListener {
@@ -62,15 +73,13 @@ class LoginActivity : BaseActivity(), ILoginView {
     }
 
     override fun onSuccess() {
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        val intent = HomeActivity.newIntent(this)
         startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
         finish()
     }
 
     private fun gotoRegister(){
-        val intent = Intent(this, RegisterActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        val intent = RegisterActivity.newIntent(this)
         startActivity(intent, ActivityOptionsCompat.makeCustomAnimation(this, R.anim.anim_slide_in_left,  R.anim.anim_slide_out_left).toBundle())
     }
 

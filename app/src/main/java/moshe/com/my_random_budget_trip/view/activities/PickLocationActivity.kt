@@ -39,7 +39,7 @@ class PickLocationActivity : BaseActivity() {
     override fun getContentView(): Int = R.layout.activity_pick_loaction
 
     private fun init() {
-
+        country = Country()
         val autocompleteFragment = fragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as PlaceAutocompleteFragment
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place?) {
@@ -63,8 +63,8 @@ class PickLocationActivity : BaseActivity() {
                 } else {
                     setResult(Activity.RESULT_CANCELED, intent)
                 }
-                finish()
             }
+            finish()
         }
     }
 

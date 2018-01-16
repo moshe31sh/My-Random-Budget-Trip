@@ -1,5 +1,7 @@
 package moshe.com.my_random_budget_trip.view.activities
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_register.*
 import moshe.com.my_random_budget_trip.R
@@ -17,6 +19,15 @@ class RegisterActivity : BaseActivity(), ILoginView {
         super.onCreate(savedInstanceState)
         init()
     }
+
+    companion object {
+        fun newIntent(context: Context): Intent {
+            val intent = Intent(context, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            return intent
+        }
+    }
+
 
     override fun getContentView(): Int = R.layout.activity_register
 
