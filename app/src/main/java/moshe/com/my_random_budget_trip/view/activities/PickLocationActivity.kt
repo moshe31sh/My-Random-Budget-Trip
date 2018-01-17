@@ -46,7 +46,8 @@ class PickLocationActivity : BaseActivity() {
                 if (place != null) {
                     val city = ArrayList<City>()
                     city.add(City(place.name.toString()))
-                    country = Country(place.address.toString(), city)
+                    val countryName = place.address.toString().substring(place.address.toString().lastIndexOf(" " ) + 1,place.address.toString().length)
+                    country = Country(countryName, city)
                 }
             }
 
@@ -59,7 +60,7 @@ class PickLocationActivity : BaseActivity() {
             if (country.cities.size > 0) {
                 intent.putExtra(EXTRA_COUNTRY_DATA, country)
                 if (country.cities.size > 0) {
-                    setResult(RESULT_CODE_NEW_LOCATION, intent)
+                    setResult(Activity.RESULT_OK, intent)
                 } else {
                     setResult(Activity.RESULT_CANCELED, intent)
                 }

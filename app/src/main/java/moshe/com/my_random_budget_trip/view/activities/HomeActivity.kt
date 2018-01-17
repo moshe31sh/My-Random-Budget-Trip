@@ -1,5 +1,6 @@
 package moshe.com.my_random_budget_trip.view.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -7,22 +8,27 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.content_home.*
 import moshe.com.my_random_budget_trip.R
+import moshe.com.my_random_budget_trip.adapters.CountryAdapter
 import moshe.com.my_random_budget_trip.contract_impl.HomeActivityPresenterImpl
 import moshe.com.my_random_budget_trip.contracts.IHomeActivityPresenter
 import moshe.com.my_random_budget_trip.contracts.IHomeActivityView
+import moshe.com.my_random_budget_trip.model.City
 import moshe.com.my_random_budget_trip.model.Country
 import moshe.com.my_random_budget_trip.utils.RESULT_CODE_NEW_LOCATION
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IHomeActivityView{
 
     private lateinit var mHomeActivityPresenter : IHomeActivityPresenter
-    private lateinit var country: Country
+    private lateinit var mLocation: ArrayList<Country>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +47,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun getContentView(): Int = R.layout.activity_home
 
     private fun init(){
+        mLocation = ArrayList()
         mHomeActivityPresenter = HomeActivityPresenterImpl(this)
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -51,6 +58,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         homeActivityAddNewCountryFab.setOnClickListener {
             gotoPickLocationActivity()
         }
+
+        val adapter = CountryAdapter(mLocation, this)
+        activityHomeRecycleView.layoutManager = LinearLayoutManager(this)
+        activityHomeRecycleView.adapter = adapter
+
     }
 
     override fun onBackPressed() {
@@ -121,9 +133,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when{
-            resultCode == RESULT_CODE_NEW_LOCATION ->{
-                country = data!!.getParcelableExtra(PickLocationActivity.EXTRA_COUNTRY_DATA)
+            requestCode == RESULT_CODE_NEW_LOCATION && resultCode == Activity.RESULT_OK ->{
+                var country: Country = data!!.getParcelableExtra(PickLocationActivity.EXTRA_COUNTRY_DATA)
+                mHomeActivityPresenter.arrangeLocationListByCountries(country, mLocation)
+
             }
         }
+    }
+
+    override fun updateList(location: ArrayList<Country>) {
+        mLocation = location
+        val adapter = CountryAdapter(mLocation, this)
+        activityHomeRecycleView.adapter = adapter
     }
 }

@@ -44,7 +44,7 @@ class CountryAdapter(groups: List<Country> ,private val mContext: Context) : Exp
 
     class CountryViewHolder(itemView: View?) : GroupViewHolder(itemView) {
 
-        private var countryName : TextView = itemView!!.findViewById(R.id.countryRowTitle)
+        private var countryName: TextView = itemView!!.findViewById(R.id.countryRowTitle)
         private var arrow: ImageView = itemView!!.findViewById(R.id.countryRowArrow)
 
         fun setCountryName(country: ExpandableGroup<*>?){
