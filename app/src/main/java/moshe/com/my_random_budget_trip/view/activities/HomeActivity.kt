@@ -141,9 +141,21 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun updateList(location: ArrayList<Country>) {
+    override fun updateList(location: ArrayList<Country>, indexToScroll: Int) {
         mLocation = location
         val adapter = CountryAdapter(mLocation, this)
         activityHomeRecycleView.adapter = adapter
+        activityHomeRecycleView.scrollToPosition(indexToScroll)
+        (activityHomeRecycleView.adapter as CountryAdapter).doExpand(indexToScroll)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        (activityHomeRecycleView.adapter as CountryAdapter).onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        (activityHomeRecycleView.adapter as CountryAdapter).onRestoreInstanceState(savedInstanceState)
     }
 }

@@ -7,5 +7,5 @@ import moshe.com.my_random_budget_trip.model.Country
  */
 interface IHomeActivityView : IBaseViewAction {
     fun goToLogin()
-    fun updateList(location: ArrayList<Country>)
+    fun updateList(location: ArrayList<Country>, indexToScroll: Int)
 }

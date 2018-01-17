@@ -39,10 +39,13 @@ class CountryAdapter(groups: List<Country> ,private val mContext: Context) : Exp
     override fun onCreateChildViewHolder(parent: ViewGroup?, viewType: Int): CityViewHolder =
             CityViewHolder(LayoutInflater.from(mContext).inflate(R.layout.city_row, parent, false))
 
+    fun doExpand(index: Int){
+        onGroupClick(index)
+    }
 
 
 
-    class CountryViewHolder(itemView: View?) : GroupViewHolder(itemView) {
+     class CountryViewHolder(itemView: View?) : GroupViewHolder(itemView) {
 
         private var countryName: TextView = itemView!!.findViewById(R.id.countryRowTitle)
         private var arrow: ImageView = itemView!!.findViewById(R.id.countryRowArrow)
@@ -50,7 +53,6 @@ class CountryAdapter(groups: List<Country> ,private val mContext: Context) : Exp
         fun setCountryName(country: ExpandableGroup<*>?){
             countryName.text = country!!.title
         }
-
 
         override fun expand() {
             animateExpand()
@@ -83,6 +85,5 @@ class CountryAdapter(groups: List<Country> ,private val mContext: Context) : Exp
         fun onBind(city: City){
             cityName.text = city.name
         }
-
     }
 }

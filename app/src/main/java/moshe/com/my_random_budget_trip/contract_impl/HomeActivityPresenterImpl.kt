@@ -29,6 +29,6 @@ class HomeActivityPresenterImpl(private val mHomeActivityView: IHomeActivityView
         if (isNotExist){
             locationList.add(country)
         }
-        mHomeActivityView.updateList(locationList)
+        mHomeActivityView.updateList(locationList, locationList.indexOf(country))
     }
 }
